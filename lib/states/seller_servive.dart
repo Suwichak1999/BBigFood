@@ -45,7 +45,7 @@ class _SellerServiceState extends State<SellerService> {
       for (var item in json.decode(value.data)) {
         setState(() {
           userModel = UserModel.fromMap(item);
-          widgets.add(ShowOrderSeller());
+          widgets.add(ShowOrderSeller(userModel: userModel!,));
           widgets.add(ShopManageSeller(userModel: userModel!));
           widgets.add(ShowFoodSeller());
         });

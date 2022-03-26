@@ -45,7 +45,7 @@ class _BuyerServiceState extends State<BuyerService> {
         setState(() {
           userModel = UserModel.fromMap(item);
           widgets.add(ShowAllShopBuyer());
-          widgets.add(MyOrderBuyer());
+          widgets.add(MyOrderBuyer(userModel: userModel!,));
           widgets.add(MyInformationBuyer(userModel: userModel!));
         });
       }
@@ -61,7 +61,7 @@ class _BuyerServiceState extends State<BuyerService> {
               onPressed: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ShowShoppingCart(),
+                    builder: (context) => ShowShoppingCart(userModel: userModel!,),
                   )),
               icon: Icon(Icons.shopping_cart_outlined))
         ],

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:bbigfood/models/menu_model.dart';
 import 'package:bbigfood/models/sqlite_model.dart';
 import 'package:bbigfood/utility/my_constant.dart';
+import 'package:bbigfood/utility/my_dialog.dart';
 import 'package:bbigfood/utility/sqlite_helper.dart';
 import 'package:bbigfood/widgets/show_image.dart';
 import 'package:bbigfood/widgets/show_progress.dart';
@@ -242,9 +243,25 @@ class _ShowAllFoodState extends State<ShowAllFood> {
           ),
           actions: [
             TextButton(
-                onPressed: () {
+                onPressed: () async {
                   Navigator.pop(context);
-                  procassAddCart(menuModel: menuModel, amount: amount);
+
+                  await SQLiteHelper().readData().then((value) {
+                    if (value.isEmpty) {
+                      procassAddCart(menuModel: menuModel, amount: amount);
+                    } else {
+                      SQLiteModel? sqLiteModel;
+                      for (var item in value) {
+                        sqLiteModel = item;
+                      }
+                      if (userModel!.id == sqLiteModel!.idSeller) {
+                        procassAddCart(menuModel: menuModel, amount: amount);
+                      } else {
+                        MyDialog().normalDialog(context, 'ผิดร้าน',
+                            'กรุณา เลือกซื้อของจากร้าน ${sqLiteModel.nameSeller} ก่อนค่ะ');
+                      }
+                    }
+                  });
                 },
                 child: const Text('Add')),
             TextButton(
@@ -260,7 +277,7 @@ class _ShowAllFoodState extends State<ShowAllFood> {
     required MenuModel menuModel,
     required int amount,
   }) async {
-    print('food ===> ${menuModel.name} amount ==> $amount');
+    // print('food ===> ${menuModel.name} amount ==> $amount');
 
     int priceInt = int.parse(menuModel.price);
     int sumInt = priceInt * amount;

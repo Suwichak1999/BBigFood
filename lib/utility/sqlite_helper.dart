@@ -56,7 +56,13 @@ class SQLiteHelper {
     return sqliteModels;
   }
 
-  void deleteWhereId() {}
+  Future<void> deleteWhereId(int indexDelete) async {
+    Database database = await connectedDatabase();
+    await database.delete(tableDatabase, where: '$columnId = $indexDelete');
+  }
 
-  void clearDatabase() {}
+  Future<void> clearDatabase() async {
+    Database database = await connectedDatabase();
+    await database.delete(tableDatabase);
+  }
 }
