@@ -47,8 +47,8 @@ class _ListOrderDetailState extends State<ListOrderDetail> {
     return Scaffold(
       appBar: AppBar(
         title: Text(buyerbol!
-            ? 'ร้าน ${orderModel!.nameSeller}'
-            : 'ผู้ซื้อ ${orderModel!.nameBuyer}'),
+            ? ' ${orderModel!.nameSeller}'
+            : 'ผู้ซื้อ :  ${orderModel!.nameBuyer}'),
       ),
       body: Column(
         children: [
@@ -57,14 +57,20 @@ class _ListOrderDetailState extends State<ListOrderDetail> {
           Divider(
             color: MyConstant.dart,
           ),
-          nawTotal(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: nawTotal(),
+          ),
           Divider(
             color: MyConstant.dart,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ShowTitle(title: 'สถานะ : ${orderModel!.status}'),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ShowTitle(title: 'สถานะ : ${orderModel!.status}'),
+              ),
               SizedBox(
                 width: 36,
               ),
@@ -96,14 +102,14 @@ class _ListOrderDetailState extends State<ListOrderDetail> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              ShowTitle(title: 'Total :  '),
+              ShowTitle(title: 'ทั้งหมด :    ',textStyle: MyConstant().h2Style(),),
             ],
           ),
         ),
         Expanded(
           flex: 2,
           child: ShowTitle(
-            title: orderModel!.total,
+            title: '${orderModel!.total}  บาท',
             textStyle: MyConstant().h2Style(),
           ),
         ),
@@ -120,20 +126,29 @@ class _ListOrderDetailState extends State<ListOrderDetail> {
         children: [
           Expanded(
             flex: 3,
-            child: ShowTitle(
-              title: nameFoods[index],
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ShowTitle(
+                title: nameFoods[index],
+              ),
             ),
           ),
           Expanded(
             flex: 1,
-            child: ShowTitle(
-              title: priceFoods[index],
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ShowTitle(
+                title: priceFoods[index],
+              ),
             ),
           ),
           Expanded(
             flex: 1,
-            child: ShowTitle(
-              title: amountFoods[index],
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ShowTitle(
+                title: amountFoods[index],
+              ),
             ),
           ),
           Expanded(

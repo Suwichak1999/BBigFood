@@ -72,7 +72,6 @@ class _ShowOrderSellerState extends State<ShowOrderSeller> {
                           builder: (context) => ListOrderDetail(
                             buyerbol: false,
                             orderModel: orderModels[index],
-                            
                           ),
                         )).then((value) {
                       setState(() {
@@ -91,9 +90,14 @@ class _ShowOrderSellerState extends State<ShowOrderSeller> {
                               textStyle: MyConstant().h2Style(),
                             ),
                             ShowTitle(
-                                title: 'Total : ${orderModels[index].total}'),
+                                title:
+                                    'ทั้งหด :   ${orderModels[index].total} บาท'),
                             ShowTitle(
-                                title: 'สถานะ : ${orderModels[index].status}'),
+                              title: 'สถานะ : ${orderModels[index].status}',
+                              textStyle: orderModels[index].status == 'order'
+                                  ? MyConstant().h3redStyle()
+                                  : MyConstant().h3Style(),
+                            )
                           ],
                         ),
                       ),

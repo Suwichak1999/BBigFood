@@ -18,57 +18,58 @@ class ShowShopSeller extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(child: Text('Menu'),
+      floatingActionButton: FloatingActionButton(
+        child: Text('Menu'),
         onPressed: () => Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ShowAllFood(userModel: userModel,),
+            builder: (context) => ShowAllFood(
+              userModel: userModel,
+            ),
           ),
         ),
       ),
       appBar: AppBar(
         title: Text(userModel.name),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            ShowTitle(
-              title: userModel.name,
-              textStyle: MyConstant().h1Style(),
-            ),
-            displayTitle(head: 'เบอร์โทร :', detail: userModel.phone),
-            displayTitle(head: 'รูปภาพ :', detail: ''),
-            SizedBox(
-                width: 200,
-                height: 180,
-                child: CachedNetworkImage(
-                  imageUrl: '${MyConstant.domain}${userModel.avatar}',
-                  placeholder: (context, url) => const ShowProgress(),
-                )),
-            displayTitle(head: 'ตำแหน่งที่ตั้ง :', detail: ''),
-            SizedBox(
-              width: 200,
-              height: 150,
-              child: GoogleMap(
-                initialCameraPosition: CameraPosition(
-                  target: LatLng(
-                    double.parse(userModel.lat),
-                    double.parse(userModel.lng),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              displayTitle(head: 'เบอร์โทร :  ', detail: userModel.phone),
+              displayTitle(head: 'รูปภาพ :', detail: ''),
+              SizedBox(
+                  width: 300,
+                  height: 280,
+                  child: CachedNetworkImage(
+                    imageUrl: '${MyConstant.domain}${userModel.avatar}',
+                    placeholder: (context, url) => const ShowProgress(),
+                  )),
+              displayTitle(head: 'ตำแหน่งที่ตั้ง :', detail: ''),
+              SizedBox(
+                width: 300,
+                height: 250,
+                child: GoogleMap(
+                  initialCameraPosition: CameraPosition(
+                    target: LatLng(
+                      double.parse(userModel.lat),
+                      double.parse(userModel.lng),
+                    ),
+                    zoom: 16,
                   ),
-                  zoom: 16,
+                  markers: <Marker>[
+                    Marker(
+                        infoWindow: InfoWindow(title: userModel.name),
+                        markerId: MarkerId('id'),
+                        position: LatLng(
+                          double.parse(userModel.lat),
+                          double.parse(userModel.lng),
+                        ))
+                  ].toSet(),
                 ),
-                markers: <Marker>[
-                  Marker(
-                      infoWindow: InfoWindow(title: userModel.name),
-                      markerId: MarkerId('id'),
-                      position: LatLng(
-                        double.parse(userModel.lat),
-                        double.parse(userModel.lng),
-                      ))
-                ].toSet(),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

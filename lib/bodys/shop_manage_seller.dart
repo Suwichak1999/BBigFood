@@ -86,7 +86,7 @@ class _ShopManageSellerState extends State<ShopManageSeller> {
                     children: [
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 10),
-                        width: constraints.maxWidth * 0.6,
+                        width: constraints.maxWidth * 0.7,
                         child: CachedNetworkImage(
                           imageUrl: '${MyConstant.domain}${userModel!.avatar}',
                           placeholder: (context, url) => ShowProgress(),
@@ -105,7 +105,7 @@ class _ShopManageSellerState extends State<ShopManageSeller> {
                     children: [
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 10),
-                        width: constraints.maxWidth * 0.75,
+                        width: constraints.maxWidth * 0.7,
                         height: constraints.maxWidth * 0.5,
                         child: GoogleMap(
                           initialCameraPosition: CameraPosition(

@@ -170,7 +170,7 @@ class _EditInformationSellerState extends State<EditInformationSeller> {
             border: Border.all(color: Colors.grey),
           ),
           margin: EdgeInsets.symmetric(vertical: 16),
-          width: constraints.maxWidth * 0.75,
+          width: constraints.maxWidth * 0.7,
           height: constraints.maxWidth * 0.5,
           child: latLng == null
               ? ShowProgress()

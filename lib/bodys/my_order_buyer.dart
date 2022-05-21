@@ -85,7 +85,7 @@ class _MyOrderBuyerState extends State<MyOrderBuyer> {
                               textStyle: MyConstant().h2Style(),
                             ),
                             ShowTitle(
-                              title: 'สถานะ : ${orderModels[index].status}',
+                              title: 'สถานะ :  ${orderModels[index].status}',
                               textStyle: orderModels[index].status == 'order'
                                   ? MyConstant().h3redStyle()
                                   : MyConstant().h3Style(),
@@ -98,7 +98,7 @@ class _MyOrderBuyerState extends State<MyOrderBuyer> {
                 )
               : Center(
                   child: ShowTitle(
-                  title: 'ไม่มีประวัติการซื้อค่ะ',
+                  title: 'ไม่มีประวัติการซื้อ',
                   textStyle: MyConstant().h1Style(),
                 )),
     );

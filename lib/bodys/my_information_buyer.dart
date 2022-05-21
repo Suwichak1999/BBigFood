@@ -108,8 +108,8 @@ class _MyInformationBuyerState extends State<MyInformationBuyer> {
                     children: [
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 16),
-                        width: constraints.maxWidth * 0.6,
-                        height: constraints.maxWidth * 0.6,
+                        width: constraints.maxWidth * 0.7,
+                        height: constraints.maxWidth * 0.5,
                         child: GoogleMap(
                           initialCameraPosition: CameraPosition(
                             target: LatLng(

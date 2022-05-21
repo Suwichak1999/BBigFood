@@ -115,7 +115,7 @@ class _BuyerServiceState extends State<BuyerService> {
   ListTile menuMyOrder() {
     return ListTile(
       leading: Icon(
-        Icons.shopping_cart_outlined,
+        Icons.receipt_long_outlined,
         size: 36,
         color: MyConstant.dart,
       ),

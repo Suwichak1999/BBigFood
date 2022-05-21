@@ -24,7 +24,6 @@ final Map<String, WidgetBuilder> map = {
 String? initlalRoute;
 
 Future<Null> main() async {
-
   HttpOverrides.global = MyHttpOvverrider();
 
   WidgetsFlutterBinding.ensureInitialized();

@@ -18,28 +18,28 @@ class ShowHead extends StatelessWidget {
             Expanded(
               flex: 3,
               child: ShowTitle(
-                title: 'Name',
+                title: 'ชื่อเมนู',
                 textStyle: MyConstant().h3Whitew700Style(),
               ),
             ),
             Expanded(
               flex: 1,
               child: ShowTitle(
-                title: 'Price',
+                title: 'ราคา',
                 textStyle: MyConstant().h3Whitew700Style(),
               ),
             ),
             Expanded(
               flex: 1,
               child: ShowTitle(
-                title: 'Amount',
+                title: 'จำนวน',
                 textStyle: MyConstant().h3Whitew700Style(),
               ),
             ),
             Expanded(
               flex: 1,
               child: ShowTitle(
-                title: 'Sum',
+                title: 'รวม',
                 textStyle: MyConstant().h3Whitew700Style(),
               ),
             ),

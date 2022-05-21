@@ -66,44 +66,49 @@ class _ShowShoppingCartState extends State<ShowShoppingCart> {
       body: load
           ? const ShowProgress()
           : haveData!
-              ? Column(
-                  children: [
-                    ShowTitle(
-                      title: sqlModels[0].nameSeller,
-                      textStyle: MyConstant().h1Style(),
-                    ),
-                    ShowHead(),
-                    newListCart(),
-                    Divider(color: MyConstant.dart),
-                    newTotal(),
-                    Divider(color: MyConstant.dart),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            processOrder();
-                          },
-                          child: Text('Order'),
+              ? SingleChildScrollView(
+                child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ShowTitle(
+                          title: sqlModels[0].nameSeller,
+                          textStyle: MyConstant().h1Style(),
                         ),
-                        Container(
-                          margin: EdgeInsets.symmetric(horizontal: 8),
-                          child: ElevatedButton(
-                            onPressed: () async {
-                              await SQLiteHelper()
-                                  .clearDatabase()
-                                  .then((value) => readAllCart());
+                      ),
+                      ShowHead(),
+                      newListCart(),
+                      Divider(color: MyConstant.dart),
+                      newTotal(),
+                      Divider(color: MyConstant.dart),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              processOrder();
                             },
-                            child: Text('Clear Cart'),
+                            child: Text('Order'),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
-                )
+                          Container(
+                            margin: EdgeInsets.symmetric(horizontal: 8),
+                            child: ElevatedButton(
+                              onPressed: () async {
+                                await SQLiteHelper()
+                                    .clearDatabase()
+                                    .then((value) => readAllCart());
+                              },
+                              child: Text('Cancel'),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+              )
               : Center(
                   child: ShowTitle(
-                    title: 'ไม่มีของใน ตะกร้า',
+                    title: 'ไม่มีรายการอาหารที่จะสั่ง',
                     textStyle: MyConstant().h1Style(),
                   ),
                 ),
@@ -119,7 +124,7 @@ class _ShowShoppingCartState extends State<ShowShoppingCart> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               ShowTitle(
-                title: 'Totat : ',
+                title: 'ทั้งหมด :    ',
                 textStyle: MyConstant().h2Style(),
               ),
             ],
@@ -128,7 +133,7 @@ class _ShowShoppingCartState extends State<ShowShoppingCart> {
         Expanded(
           flex: 2,
           child: ShowTitle(
-            title: total.toString(),
+            title: '${total.toString()}   บาท',
             textStyle: MyConstant().h2Style(),
           ),
         ),
@@ -145,15 +150,24 @@ class _ShowShoppingCartState extends State<ShowShoppingCart> {
         children: [
           Expanded(
             flex: 3,
-            child: ShowTitle(title: sqlModels[index].nameMenu),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ShowTitle(title: sqlModels[index].nameMenu),
+            ),
           ),
           Expanded(
             flex: 1,
-            child: ShowTitle(title: sqlModels[index].price),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ShowTitle(title: sqlModels[index].price),
+            ),
           ),
           Expanded(
             flex: 1,
-            child: ShowTitle(title: sqlModels[index].amount),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ShowTitle(title: sqlModels[index].amount),
+            ),
           ),
           Expanded(
             flex: 1,
